@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:latest
+    environment:
+{% for key, value in docker_env_vars.items() %}
+      {{ key }}: "{{ value }}"
+{% endfor %}
+    ports:
+      - "80:80"

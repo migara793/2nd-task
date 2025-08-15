@@ -1,0 +1,5 @@
+docker_env_vars:
+  ENVIRONMENT: production
+  DEBUG: "false"
+  DB_HOST: db.example.com
+  DB_PORT: "5432"

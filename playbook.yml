@@ -1,0 +1,15 @@
+---
+- name: Deploy Docker Compose with updated environment variables
+  hosts: localhost
+  connection: local
+  become: false
+  gather_facts: no
+
+  # Optional: override variables from defaults
+  # vars:
+  #   some_var: value
+
+  roles:
+    - role: docker_compose_deploy
+      # You can override defaults here if needed
+      # project_root: "/custom/path"

@@ -1,0 +1,14 @@
+---
+- name: Render docker-compose.yml from template
+  ansible.builtin.template:
+    src: docker-compose.yml.j2
+    dest: "{{ project_root }}/docker-compose.yml"
+    mode: '0644'
+
+- name: Deploy or update Docker services
+  ansible.builtin.command:
+    cmd: docker compose up -d
+  args:
+    chdir: "{{ project_root }}"
+  register: compose_output
+  changed_when: "'Creating' in compose_output.stdout or 'Starting' in compose_output.stdout or 'Recreating' in compose_output.stdout"
